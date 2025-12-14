@@ -27,7 +27,7 @@ func InitDB(cfg *config.Config) *gorm.DB {
 		log.Fatalf("Could not connect to database: %v", err)
 	}
 
-	db.AutoMigrate(&models.Task{})
+	db.AutoMigrate(&models.Task{}, &models.User{})
 
 	return db
 }
