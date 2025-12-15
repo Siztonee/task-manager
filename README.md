@@ -17,7 +17,7 @@ go mod tidy
 
 ### 4. Run postgresql and Change the login information for postgre in .env file
 ```env
-	POSTGRES_HOST=localhost
+  POSTGRES_HOST=localhost
   POSTGRES_PORT=db_port
   POSTGRES_DB=db_name
   POSTGRES_USER=db_user
