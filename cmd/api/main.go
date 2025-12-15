@@ -41,6 +41,8 @@ func main() {
 	{
 		tasks.GET("/", taskHandler.GetAll)
 		tasks.POST("/", taskHandler.Create)
+		tasks.PATCH("/:id", taskHandler.Update)
+		tasks.DELETE("/:id", taskHandler.Delete)
 	}
 
 	r.Run()

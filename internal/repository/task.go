@@ -23,3 +23,34 @@ func (r *TaskRepository) GetAll() ([]models.Task, error) {
 func (r *TaskRepository) Create(task *models.Task) error {
 	return r.DB.Create(task).Error
 }
+
+func (r *TaskRepository) Update(id uint, updates map[string]interface{}) error {
+	res := r.DB.
+		Model(&models.Task{}).
+		Where("id = ?", id).
+		Updates(updates)
+
+	if res.Error != nil {
+		return res.Error
+	}
+
+	if res.RowsAffected == 0 {
+		return gorm.ErrRecordNotFound
+	}
+
+	return nil
+}
+
+func (r *TaskRepository) Delete(id uint) error {
+	res := r.DB.Delete(&models.Task{}, id)
+
+	if res.Error != nil {
+		return res.Error
+	}
+
+	if res.RowsAffected == 0 {
+		return gorm.ErrRecordNotFound
+	}
+
+	return nil
+}
